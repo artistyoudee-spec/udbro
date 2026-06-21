@@ -325,18 +325,18 @@
                 break;
 
             case 'video':
-                // Use iframe embed for Google Drive videos
+                // Reverting to the official Drive iframe, but wrapping it in a strict vertical aspect-ratio box
                 modalMedia.innerHTML = `
-                    <div class="media-container video-container">
+                    <div style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden; border-radius: 12px; background: #000; margin-bottom: 10px;">
                         <iframe 
-                            src="${escapeAttr(embedUrl)}" 
+                            src="https://drive.google.com/file/d/${fileId}/preview" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                             allow="autoplay" 
-                            allowfullscreen 
-                            loading="lazy"
-                            class="media-iframe"
-                        ></iframe>
-                        <a href="https://drive.google.com/file/d/${fileId}/view" target="_blank" rel="noopener" class="media-open-link">🔗 Open video in Drive</a>
-                    </div>`;
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a href="https://drive.google.com/file/d/${fileId}/view" target="_blank" rel="noopener" class="media-open-link">🔗 Open video in Drive</a>
+                `;
                 break;
 
             default:
