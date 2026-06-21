@@ -608,6 +608,25 @@
     // Initialize
     // ==========================================
     function init() {
+    // ==========================================
+    // Background Music & Enter Screen
+    // ==========================================
+    const bgMusic = document.getElementById('bgMusic');
+    const enterScreen = document.getElementById('enterScreen');
+    const enterBtn = document.getElementById('enterBtn');
+
+    bgMusic.volume = 0.05; // Set volume to 20%
+
+    enterBtn.addEventListener('click', () => {
+        // 1. Play the music
+        bgMusic.play().catch(err => console.log("Audio play failed:", err));
+        
+        // 2. Hide the enter screen gracefully
+        enterScreen.classList.add('hidden-overlay');
+        
+        // Optional: Trigger your confetti right when they enter!
+        initConfetti();
+    });
         // Apply config
         birthdayTitle.textContent = config.title;
         birthdayName.textContent = `${config.name} ❤️`;
