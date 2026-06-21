@@ -2,91 +2,47 @@
    Harshu Birthday Website - Main Script
    ============================================ */
 
-(function () {
+(async function () {
     'use strict';
 
     // ==========================================
     // Default Configuration
     // ==========================================
-    const DEFAULT_CONFIG = {
-        name: 'Harshu',
-        birthdayDate: getTomorrowDate(), // Default: tomorrow
-        title: 'Happy Birthday',
-        cards: generateDefaultCards()
-    };
-
     function getTomorrowDate() {
         const d = new Date();
         d.setDate(d.getDate() + 1);
         return d.toISOString().split('T')[0]; // YYYY-MM-DD
     }
 
-    function generateDefaultCards() {
-        const cards = [];
-        const defaultMessages = [
-            "The moment the clock strikes midnight, my heart skips a beat knowing it's YOUR day! 🎉",
-            "At 1 AM, the world is quiet but my love for you is loud and clear! 💕",
-            "2 AM thoughts? Just you, always you. 💫",
-            "Even at 3 AM, you're the most beautiful dream I've ever had. 🌙",
-            "4 AM and I'm still thinking about how lucky I am to have you. 🍀",
-            "5 AM: The sun is getting ready, just like my love — always rising for you. 🌅",
-            "6 AM: Good morning, birthday queen! The world is brighter because of you. 👑",
-            "7 AM: Rise and shine, my love! Today is YOUR day! ☀️",
-            "8 AM: Breakfast tastes sweeter knowing it's your birthday. 🥞",
-            "9 AM: Every smile you give today makes the world a better place. 😊",
-            "10 AM: Sending you a thousand hugs and a million kisses! 💋",
-            "11 AM: Halfway through the morning, but my celebration for you never stops! 🎊",
-            "12 PM: Happy noon, birthday star! Keep shining bright! ⭐",
-            "1 PM: Afternoon delight? More like having YOU in my life is the real delight! 💝",
-            "2 PM: My love for you grows stronger with every passing hour. 💪",
-            "3 PM: Afternoon vibes and birthday smiles! You deserve it all! 😄",
-            "4 PM: You make every moment magical, my love. ✨",
-            "5 PM: The golden hour is just like you — absolutely stunning. 🌄",
-            "6 PM: Sunset colors remind me of the warmth you bring to my life. 🧡",
-            "7 PM: Evening falls, but my love for you never dims. 🌆",
-            "8 PM: Dinner time! May your birthday feast be as sweet as you! 🎂",
-            "9 PM: The night is young and so is our love story! 💃",
-            "10 PM: Under the stars, I wish you the happiest birthday ever! 🌟",
-            "11 PM: The day is almost over, but my love for you is forever. 💖"
-        ];
+    let DEFAULT_CONFIG = null;
+    let config = null;
 
-        for (let i = 0; i < 24; i++) {
-            const hour = i;
-            const ampm = hour === 0 ? '12 AM' : hour < 12 ? `${hour} AM` : hour === 12 ? '12 PM' : `${hour - 12} PM`;
-            cards.push({
-                id: i + 1,
-                hour: hour,
-                title: `Hour ${i + 1} — ${ampm}`,
-                message: defaultMessages[i],
-                mediaType: '', // 'photo', 'audio', 'video', or ''
-                mediaUrl: ''
-            });
-        }
-        return cards;
-    }
-
-    // ==========================================
-    // Config Manager
-    // ==========================================
-    function loadConfig() {
+    async function loadConfig() {
         try {
+            const res = await fetch('/config.json');
+            DEFAULT_CONFIG = await res.json();
+            
+            if (!DEFAULT_CONFIG.birthdayDate) {
+                DEFAULT_CONFIG.birthdayDate = getTomorrowDate();
+            }
+
             const saved = localStorage.getItem('harshuBdayConfig');
             if (saved) {
                 const parsed = JSON.parse(saved);
-                // Merge with defaults to handle missing fields
-                return {
+                config = {
                     ...DEFAULT_CONFIG,
                     ...parsed,
                     cards: parsed.cards || DEFAULT_CONFIG.cards
                 };
+            } else {
+                config = { ...DEFAULT_CONFIG };
             }
         } catch (e) {
             console.warn('Failed to load config:', e);
+            DEFAULT_CONFIG = { name: 'Harshu', birthdayDate: getTomorrowDate(), title: 'Happy Birthday', cards: [] };
+            config = { ...DEFAULT_CONFIG };
         }
-        return { ...DEFAULT_CONFIG };
     }
-
-    let config = loadConfig();
 
     // ==========================================
     // DOM Elements
@@ -676,11 +632,16 @@
         initConfetti();
     }
 
-    // Run when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+    async function setupApp() {
+        await loadConfig();
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     }
+
+    setupApp();
 
 })();

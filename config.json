@@ -1,0 +1,31 @@
+{
+  "name": "Harshu",
+  "birthdayDate": "2026-06-20",
+  "title": "Happy Birthday",
+  "cards": [
+    { "id": 1, "hour": 0, "title": "Hour 1 — 12 AM", "message": "The moment the clock strikes midnight, my heart skips a beat knowing it's YOUR day! 🎉", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1wzuNKndEwncf_uq0zWOf1R1FmVu-T-D4/view?usp=sharing" },
+    { "id": 2, "hour": 1, "title": "Hour 2 — 1 AM", "message": "At 1 AM, the world is quiet but my love for you is loud and clear! 💕", "mediaType": "audio", "mediaUrl": "https://drive.google.com/file/d/16TL5lu8FnOtVhpz_8o_757zGAlnKMzWA/view?usp=drive_link" },
+    { "id": 3, "hour": 2, "title": "Hour 3 — 2 AM", "message": "2 AM thoughts? Just you, always you. 💫", "mediaType": "video", "mediaUrl": "https://drive.google.com/file/d/1vR8VE038Ic4X17atc7PKo5HBSGFhKSj5/view?usp=drive_link" },
+    { "id": 4, "hour": 3, "title": "Hour 4 — 3 AM", "message": "Even at 3 AM, you're the most beautiful dream I've ever had. 🌙", "mediaType": "", "mediaUrl": "" },
+    { "id": 5, "hour": 4, "title": "Hour 5 — 4 AM", "message": "4 AM and I'm still thinking about how lucky I am to have you. 🍀", "mediaType": "", "mediaUrl": "" },
+    { "id": 6, "hour": 5, "title": "Hour 6 — 5 AM", "message": "5 AM: The sun is getting ready, just like my love — always rising for you. 🌅", "mediaType": "", "mediaUrl": "" },
+    { "id": 7, "hour": 6, "title": "Hour 7 — 6 AM", "message": "6 AM: Good morning, birthday queen! The world is brighter because of you. 👑", "mediaType": "", "mediaUrl": "" },
+    { "id": 8, "hour": 7, "title": "Hour 8 — 7 AM", "message": "7 AM: Rise and shine, my love! Today is YOUR day! ☀️", "mediaType": "", "mediaUrl": "" },
+    { "id": 9, "hour": 8, "title": "Hour 9 — 8 AM", "message": "8 AM: Breakfast tastes sweeter knowing it's your birthday. 🥞", "mediaType": "", "mediaUrl": "" },
+    { "id": 10, "hour": 9, "title": "Hour 10 — 9 AM", "message": "9 AM: Every smile you give today makes the world a better place. 😊", "mediaType": "", "mediaUrl": "" },
+    { "id": 11, "hour": 10, "title": "Hour 11 — 10 AM", "message": "10 AM: Sending you a thousand hugs and a million kisses! 💋", "mediaType": "", "mediaUrl": "" },
+    { "id": 12, "hour": 11, "title": "Hour 12 — 11 AM", "message": "11 AM: Halfway through the morning, but my celebration for you never stops! 🎊", "mediaType": "", "mediaUrl": "" },
+    { "id": 13, "hour": 12, "title": "Hour 13 — 12 PM", "message": "12 PM: Happy noon, birthday star! Keep shining bright! ⭐", "mediaType": "", "mediaUrl": "" },
+    { "id": 14, "hour": 13, "title": "Hour 14 — 1 PM", "message": "1 PM: Afternoon delight? More like having YOU in my life is the real delight! 💝", "mediaType": "", "mediaUrl": "" },
+    { "id": 15, "hour": 14, "title": "Hour 15 — 2 PM", "message": "2 PM: My love for you grows stronger with every passing hour. 💪", "mediaType": "", "mediaUrl": "" },
+    { "id": 16, "hour": 15, "title": "Hour 16 — 3 PM", "message": "3 PM: Afternoon vibes and birthday smiles! You deserve it all! 😄", "mediaType": "", "mediaUrl": "" },
+    { "id": 17, "hour": 16, "title": "Hour 17 — 4 PM", "message": "4 PM: You make every moment magical, my love. ✨", "mediaType": "", "mediaUrl": "" },
+    { "id": 18, "hour": 17, "title": "Hour 18 — 5 PM", "message": "5 PM: The golden hour is just like you — absolutely stunning. 🌄", "mediaType": "", "mediaUrl": "" },
+    { "id": 19, "hour": 18, "title": "Hour 19 — 6 PM", "message": "6 PM: Sunset colors remind me of the warmth you bring to my life. 🧡", "mediaType": "", "mediaUrl": "" },
+    { "id": 20, "hour": 19, "title": "Hour 20 — 7 PM", "message": "7 PM: Evening falls, but my love for you never dims. 🌆", "mediaType": "", "mediaUrl": "" },
+    { "id": 21, "hour": 20, "title": "Hour 21 — 8 PM", "message": "8 PM: Dinner time! May your birthday feast be as sweet as you! 🎂", "mediaType": "", "mediaUrl": "" },
+    { "id": 22, "hour": 21, "title": "Hour 22 — 9 PM", "message": "9 PM: The night is young and so is our love story! 💃", "mediaType": "", "mediaUrl": "" },
+    { "id": 23, "hour": 22, "title": "Hour 23 — 10 PM", "message": "10 PM: Under the stars, I wish you the happiest birthday ever! 🌟", "mediaType": "", "mediaUrl": "" },
+    { "id": 24, "hour": 23, "title": "Hour 24 — 11 PM", "message": "11 PM: The day is almost over, but my love for you is forever. 💖", "mediaType": "", "mediaUrl": "" }
+  ]
+}
