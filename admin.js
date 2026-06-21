@@ -19,7 +19,7 @@
 
     async function loadConfig() {
         try {
-            const res = await fetch('config.json');
+            const res = await await fetch('config.json?v=' + new Date().getTime(), { cache: 'no-store' });
             DEFAULT_CONFIG = await res.json();
             if (!DEFAULT_CONFIG.birthdayDate) {
                 DEFAULT_CONFIG.birthdayDate = getTomorrowDate();
