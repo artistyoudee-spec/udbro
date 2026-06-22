@@ -229,6 +229,9 @@
     // ==========================================
     // Open Card Modal
     // ==========================================
+    // ==========================================
+    // Open Card Modal
+    // ==========================================
     function openCard(index) {
         const card = config.cards[index];
         if (!card) return;
@@ -237,6 +240,12 @@
         modalTitle.textContent = card.title || `Hour ${card.id}`;
         modalMessage.textContent = card.message || '';
         modalMedia.innerHTML = '';
+
+        // Pause background music if this card has audio or video
+        const bgMusic = document.getElementById('bgMusic');
+        if (bgMusic && (card.mediaType === 'audio' || card.mediaType === 'video')) {
+            bgMusic.pause();
+        }
 
         // Media rendering
         if (card.mediaUrl && card.mediaType) {
@@ -325,18 +334,20 @@
                 break;
 
             case 'video':
-                // Use iframe embed for Google Drive videos
+                // The "Desktop-Scale Trick": Tricks Drive into rendering tiny desktop controls
+                // by doubling the iframe size, then shrinking it down to fit the phone screen.
+                // This handles BOTH horizontal and vertical videos perfectly.
                 modalMedia.innerHTML = `
-                    <div class="media-container video-container">
+                    <div class="media-container video-container" style="position: relative; width: 100%; height: 50vh; min-height: 380px; overflow: hidden; border-radius: 12px; background: #000; margin-bottom: 10px;">
                         <iframe 
-                            src="${escapeAttr(embedUrl)}" 
+                            src="https://drive.google.com/file/d/${fileId}/preview" 
+                            style="position: absolute; top: 0; left: 0; width: 200%; height: 200%; transform: scale(0.5); transform-origin: top left; border: none;"
                             allow="autoplay" 
-                            allowfullscreen 
-                            loading="lazy"
-                            class="media-iframe"
-                        ></iframe>
-                        <a href="https://drive.google.com/file/d/${fileId}/view" target="_blank" rel="noopener" class="media-open-link">🔗 Open video in Drive</a>
-                    </div>`;
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a href="https://drive.google.com/file/d/${fileId}/view" target="_blank" rel="noopener" class="media-open-link">🔗 Open video in Drive</a>
+                `;
                 break;
 
             default:
@@ -417,6 +428,7 @@
     function closeModal() {
         cardModal.classList.remove('active');
         document.body.style.overflow = '';
+        
         // Stop all playing media — iframes, audio, video
         const iframes = modalMedia.querySelectorAll('iframe');
         iframes.forEach(iframe => { iframe.src = iframe.src; }); // Reload to stop playback
@@ -424,6 +436,17 @@
         const video = modalMedia.querySelector('video');
         if (audio) audio.pause();
         if (video) video.pause();
+
+        // Resume background music when modal closes
+        const bgMusic = document.getElementById('bgMusic');
+        const enterScreen = document.getElementById('enterScreen');
+        // Check if the user has already passed the enter screen
+        if (bgMusic && enterScreen && enterScreen.classList.contains('hidden-overlay')) {
+            // A gentle delay makes the transition feel smoother
+            setTimeout(() => {
+                bgMusic.play().catch(err => console.log("Audio resume failed:", err));
+            }, 300);
+        }
     }
 
     modalClose.addEventListener('click', closeModal);
