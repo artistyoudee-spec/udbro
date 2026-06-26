@@ -73,6 +73,15 @@
     const confettiCanvas = $('#confettiCanvas');
     const scrollHint = $('#scrollHint');
 
+    const bgMusic = $('#bgMusic');
+    const enterScreen = $('#enterScreen');
+    const enterTimer = $('#enterTimer');
+    const entDays = $('#entDays');
+    const entHours = $('#entHours');
+    const entMinutes = $('#entMinutes');
+    const entSeconds = $('#entSeconds');
+    const enterBtn = $('#enterBtn');
+
     // ==========================================
     // Birthday & Time Logic
     // ==========================================
@@ -121,6 +130,37 @@
         const now = new Date();
         const midnight = getBirthdayMidnight();
         const end = getBirthdayEnd();
+
+        // --- NEW: Bulletproof Enter Screen Lock Logic ---
+        try {
+            if (enterScreen && !enterScreen.classList.contains('hidden-overlay')) {
+                if (now < midnight) {
+                    // Lock the button
+                    if (enterBtn) {
+                        enterBtn.disabled = true;
+                        enterBtn.innerHTML = '🔒 Unlocks at Midnight';
+                    }
+                    if (enterTimer) enterTimer.classList.remove('hidden');
+                    
+                    // Update timer numbers safely
+                    const ms = midnight - now;
+                    if (entDays) entDays.textContent = String(Math.floor(ms / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                    if (entHours) entHours.textContent = String(Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                    if (entMinutes) entMinutes.textContent = String(Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                    if (entSeconds) entSeconds.textContent = String(Math.floor((ms % (1000 * 60)) / 1000)).padStart(2, '0');
+                } else {
+                    // Birthday has arrived! Unlock the button
+                    if (enterBtn) {
+                        enterBtn.disabled = false;
+                        enterBtn.innerHTML = '🎁 Click to Open 🎁';
+                    }
+                    if (enterTimer) enterTimer.classList.add('hidden');
+                }
+            }
+        } catch (e) {
+            console.error("Timer failed to update:", e);
+        }
+        // --- END NEW LOGIC ---
 
         if (now < midnight) {
             // Before birthday — countdown to birthday
@@ -634,9 +674,7 @@
     // ==========================================
     // Background Music & Enter Screen
     // ==========================================
-    const bgMusic = document.getElementById('bgMusic');
-    const enterScreen = document.getElementById('enterScreen');
-    const enterBtn = document.getElementById('enterBtn');
+    
 
     bgMusic.volume = 0.05; // Set volume to 20%
 
