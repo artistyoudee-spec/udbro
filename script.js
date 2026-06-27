@@ -82,6 +82,11 @@
     const entSeconds = $('#entSeconds');
     const enterBtn = $('#enterBtn');
 
+    // --- NEW PASSWORD VARIABLES ---
+    const passwordSection = $('#passwordSection');
+    const secretPassword = $('#secretPassword');
+    const passwordMsg = $('#passwordMsg');
+
     // ==========================================
     // Birthday & Time Logic
     // ==========================================
@@ -155,6 +160,9 @@
                         enterBtn.innerHTML = '🎁 Click to Open 🎁';
                     }
                     if (enterTimer) enterTimer.classList.add('hidden');
+                    
+                    // NEW: Reveal the password field!
+                    if (passwordSection) passwordSection.classList.remove('hidden');
                 }
             }
         } catch (e) {
@@ -678,16 +686,46 @@
 
     bgMusic.volume = 0.05; // Set volume to 20%
 
-    enterBtn.addEventListener('click', () => {
-        // 1. Play the music
-        bgMusic.play().catch(err => console.log("Audio play failed:", err));
-        
-        // 2. Hide the enter screen gracefully
-        enterScreen.classList.add('hidden-overlay');
-        
-        // Optional: Trigger your confetti right when they enter!
-        initConfetti();
-    });
+    if (enterBtn) {
+            enterBtn.addEventListener('click', () => {
+                // Get the text she typed
+                const enteredPass = secretPassword ? secretPassword.value.trim() : '';
+
+                // Check if it matches the hardcoded password
+                if (enteredPass === 'bubu') {
+                    
+                    // Correct Password!
+                    if (passwordMsg) {
+                        passwordMsg.textContent = 'welcome my love 💕';
+                        passwordMsg.style.color = 'var(--gold)'; // Beautiful gold text
+                    }
+                    
+                    // Wait 1.5 seconds so she can read your sweet message before the site opens
+                    setTimeout(() => {
+                        if (bgMusic) bgMusic.play().catch(err => console.log("Audio play failed:", err));
+                        if (enterScreen) enterScreen.classList.add('hidden-overlay');
+                        initConfetti();
+                    }, 1500);
+
+                } else {
+                    
+                    // Wrong Password! (Intruders)
+                    if (passwordMsg) {
+                        passwordMsg.textContent = 'you are not harshu please leave.😡💢';
+                        passwordMsg.style.color = '#ff1744'; // Bright red text
+                    }
+                }
+            });
+
+            // Quality of Life: Let her press the "Enter" key on her keyboard to submit
+            if (secretPassword) {
+                secretPassword.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        enterBtn.click();
+                    }
+                });
+            }
+        }
         // Apply config
         birthdayTitle.textContent = config.title;
         birthdayName.textContent = `${config.name} ❤️`;
