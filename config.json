@@ -3,7 +3,7 @@
   "birthdayDate": "2026-06-28",
   "title": "Happy Birthday",
   "cards": [
-    { "id": 1, "hour": 0, "title": "Hour 1 — 12 AM", "message": "The moment the clock strikes midnight, my heart skips a beat knowing it's YOUR day! 🎉", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1wzuNKndEwncf_uq0zWOf1R1FmVu-T-D4/view?usp=sharing" },
+    { "id": 1, "hour": 0, "title": "Hour 1 — 12 AM", "message": "The moment the clock strikes midnight, my heart skips a beat knowing it's YOUR day! 🎉", "mediaType": "video", "mediaUrl": "https://drive.google.com/file/d/1Q5xvDgBrJzO0-fYR1adMpcv72c0L5Q0U/view?usp=sharing" },
     { "id": 2, "hour": 1, "title": "Hour 2 — 1 AM", "message": "At 1 AM, the world is quiet but my love for you is loud and clear! 💕", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1snhdxDdIUIzk1rNSjk4eFNdVZlMtOseR/view?usp=sharing" },
     { "id": 3, "hour": 2, "title": "Hour 3 — 2 AM", "message": "2 AM thoughts? Just you, always you. 💫", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1kKwTMUz00nTFXgMpyk-2Vl3n6z0gjh5m/view?usp=sharing" },
     { "id": 4, "hour": 3, "title": "Hour 4 — 3 AM", "message": "Even at 3 AM, you're the most beautiful dream I've ever had. 🌙", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1TIPm5xePVDAJLQ4KWw5Hpw1_gI3FTUQR/view?usp=drive_link"},
