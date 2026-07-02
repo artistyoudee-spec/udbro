@@ -26,6 +26,6 @@
     { "id": 21, "hour": 20, "title": "Hour 21 — 8 PM", "message": "8 PM: Dinner time! May your birthday feast be as sweet as you! 🎂", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/1kueBEKGqD0BksshpQmZqYfon3j1S4kyM/view?usp=sharing" },
     { "id": 22, "hour": 21, "title": "Hour 22 — 9 PM", "message": "9 PM: The night is young and so is our love story! 💃", "mediaType": "photo", "mediaUrl": "https://drive.google.com/file/d/18OwVfUuJdP8MiDtr9T8I9nurvFi3sGY3/view?usp=sharing" },
     { "id": 23, "hour": 22, "title": "Hour 23 — 10 PM", "message": "10 PM: Under the stars, I wish you the happiest birthday ever! 🌟", "mediaType": "audio", "mediaUrl": "https://drive.google.com/file/d/1uBPo7SuEG1zP7bPqpsPTwViyguBEkKkR/view?usp=sharing" },
-    { "id": 24, "hour": 23, "title": "Hour 24 — 11 PM", "message": "11 PM: The day is almost over, but my love for you is forever. 💖", "mediaType": "audio", "mediaUrl": "https://drive.google.com/file/d/1PICvj_1bsElJqpxuAOal8fi7udUN0CRC/view?usp=sharing" }
+    { "id": 24, "hour": 23, "title": "Hour 24 — 11 PM", "message": "11 PM: The day is almost over, but my love for you is forever. 💖", "mediaType": "video", "mediaUrl": "https://drive.google.com/file/d/1hO7HLsHjPCSNRNju5da6wrNTYaLF58b9/view?usp=drivesdk" }
   ]
 }
